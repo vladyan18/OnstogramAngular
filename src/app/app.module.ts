@@ -23,8 +23,8 @@ const appRoutes: Routes =[
     HomeComponent
   ],
   imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
