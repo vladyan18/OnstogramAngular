@@ -12,7 +12,7 @@ import { HomeComponent }   from './home.component';
 // определение маршрутов
 const appRoutes: Routes =[
   { path: '', component: HomeComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login?:code', component: LoginComponent}
 ];
 
 @NgModule({
