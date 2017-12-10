@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy{
     this.querySubscription = route.queryParams.subscribe(
       (queryParam: any) => {
         this.code = queryParam['code'];
+
       });
   }
 
