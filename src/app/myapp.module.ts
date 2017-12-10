@@ -1,3 +1,6 @@
+/**
+ * Created by Владислав on 10.12.2017.
+ */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -29,4 +32,4 @@ const appRoutes: Routes =[
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class MyAppModule { }
