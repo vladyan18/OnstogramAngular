@@ -3,27 +3,31 @@
  */
 import { Component, OnInit , OnDestroy} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'login-app',
-  template: `<h3>{{id}}</h3>`
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy{
   id: number;
-  private sub: any;
+  code: string;
 
-  constructor(private route: ActivatedRoute) {}
+  private querySubscription: Subscription;
+  constructor(private route: ActivatedRoute) {
+    this.querySubscription = route.queryParams.subscribe(
+      (queryParam: any) => {
+        this.code = queryParam['code'];
+      });
+  }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
 
-      // In a real app: dispatch action to load the details here.
-    });
   }
 
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.querySubscription.unsubscribe();
   }
 }
