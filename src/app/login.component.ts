@@ -19,7 +19,7 @@ export class User{
 export class LoginComponent implements OnInit, OnDestroy{
   id: number;
   code: string;
-  user: User;
+  user: any;
 
   private querySubscription: Subscription;
   constructor(private route: ActivatedRoute, private http: HttpClient) {
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.http.get('https://oauth.vk.com/access_token?client_id=6292953&client_secret=XIHX2kdgYNhtI7EsrDfl&code=' + this.code)
-      .subscribe((data:User) => {
+      .subscribe((data) => {
       this.user=data
        });
   }
