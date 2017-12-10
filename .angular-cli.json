@@ -11,6 +11,7 @@
         "assets",
         "favicon.ico",
         "images",
+        "web.config",
         {
           "glob": "index.js",
           "input": "./server/",
