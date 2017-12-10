@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
-    this.http.get('https://oauth.vk.com/access_token?client_id=6292953&client_secret=XIHX2kdgYNhtI7EsrDfl&code=' + this.code)
+    this.http.get('https://onstogram.azurewebsites.net/api/loginVK?code=Afw1JWaKzGpSOvygt1KMi/Y1j2lT0tqIskexFnd5nSUtV2Q9ktG/xw==&vcode=' + this.code)
       .subscribe((data) => {
       this.user=data
        });
