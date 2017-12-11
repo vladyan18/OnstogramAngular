@@ -36,15 +36,16 @@ export class AuthService {
         this.getProfile((err, profile) => {
         });
 
+        console.log("Sending post");
         this.http.post("https://onstogram.azurewebsites.net/api/addUser?code=La/tnEGZfKlJ58F9CmXcLOyJANrEiMFn39pIYS46ecSOMylA2MiR1Q==",this.userProfile)
           .subscribe((data:any) => {
+            console.log(data);
             if ((data.status != "200") && (data.status != "201"))
             {
               this.logout();
-              alert("Smthng with registering: " + data.status);
+              throw new Error("Smthng with registering: " + data.status);
             }
           });
-
         this.router.navigate(['/']);
       } else if (err) {
         this.router.navigate(['/']);
