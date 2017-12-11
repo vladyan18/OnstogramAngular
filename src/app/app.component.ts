@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth/auth.service';
-
+import {DBRegisterService} from './auth/dbregister.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,8 +9,10 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent {
   title = 'Tests';
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private db: DBRegisterService) {
   auth.handleAuthentication();
+  if (auth.isAuthenticated())
+  db.regInDB();
 }
 
   testFunc(x:number, y:number) {

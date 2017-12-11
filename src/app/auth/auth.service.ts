@@ -26,11 +26,15 @@ export class AuthService {
   public login(): void {
     this.auth0.authorize();
   }
+
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
+
+
+
         this.router.navigate(['/']);
       } else if (err) {
         this.router.navigate(['/']);
