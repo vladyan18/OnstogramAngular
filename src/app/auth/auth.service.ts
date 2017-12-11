@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
-import {noUndefined} from "@angular/compiler/src/util";
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
@@ -19,7 +19,7 @@ export class AuthService {
     scope: 'openid profile'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private http: HttpClient) {}
 
   userProfile: any;
 
@@ -33,7 +33,17 @@ export class AuthService {
         window.location.hash = '';
         this.setSession(authResult);
 
+        this.getProfile((err, profile) => {
+        });
 
+        this.http.post("https://onstogram.azurewebsites.net/api/addUser?code=La/tnEGZfKlJ58F9CmXcLOyJANrEiMFn39pIYS46ecSOMylA2MiR1Q==",this.userProfile)
+          .subscribe((data:any) => {
+            if ((data.status != "200") && (data.status != "201"))
+            {
+              this.logout();
+              alert("Smthng with registering: " + data.status);
+            }
+          });
 
         this.router.navigate(['/']);
       } else if (err) {

@@ -11,8 +11,7 @@ export class AppComponent {
 
   constructor(public auth: AuthService, private db: DBRegisterService) {
   auth.handleAuthentication();
-  if (auth.isAuthenticated())
-  db.regInDB();
+
 }
 
   testFunc(x:number, y:number) {
