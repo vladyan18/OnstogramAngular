@@ -8,6 +8,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import { LoginComponent }   from './login.component';
 import { HomeComponent }   from './home.component';
+import { PostComponent } from './post/post.component';
 
 // определение маршрутов
 const appRoutes: Routes =[
@@ -20,6 +21,7 @@ const appRoutes: Routes =[
     AppComponent,
     AppNavbarComponent,
     LoginComponent,
+    PostComponent,
     HomeComponent
   ],
   imports: [

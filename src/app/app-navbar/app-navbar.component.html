@@ -7,14 +7,8 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <a class="nav-link dropdown-toggle" href="http://onstogramm.azurewebsites.net" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
@@ -23,6 +17,14 @@
       </li>
     </ul>
     <a class="navbar-brand" href="#"><img src="assets/images/logo.png" height="53px" width="300px"/></a>
-    <a href="http://oauth.vk.com/authorize?client_id=6292953&response_type=code&redirect_uri=https://onstogramm.azurewebsites.net/login" title="Зайти через ВКонтакте">Зайти через ВКонтакте</a>
+    <button
+      class="btn btn-primary btn-margin"
+      *ngIf="!auth.isAuthenticated()"
+      (click)="auth.login()">
+      Log In
+    </button>
+    <li class="nav-item">
+    <a href="http://oauth.vk.com/authorize?client_id=6292953&response_type=code&redirect_uri=https://onstogramm.azurewebsites.net/login">Зайти через ВКонтакте</a>
+    </li>
   </div>
 </nav>

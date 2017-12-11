@@ -22,24 +22,16 @@ export class LoginComponent implements OnInit, OnDestroy{
   user: any;
 
   private querySubscription: Subscription;
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
-    this.querySubscription = route.queryParams.subscribe(
-      (queryParam: any) => {
-        this.code = queryParam['code'];
+  constructor() {
 
-      });
   }
 
   ngOnInit() {
-    this.http.get('https://onstogram.azurewebsites.net/api/loginVK?code=Afw1JWaKzGpSOvygt1KMi/Y1j2lT0tqIskexFnd5nSUtV2Q9ktG/xw==&vcode=' + this.code)
-      .subscribe((data) => {
-      this.user=data
-       });
   }
 
 
+
   ngOnDestroy() {
-    this.querySubscription.unsubscribe();
   }
 }
 

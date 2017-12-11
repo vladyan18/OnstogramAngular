@@ -1,11 +1,12 @@
 <app-navbar></app-navbar>
 <div class="container" style="background-color: ghostwhite">
   <div class="well">
-  <div class="starter-template">
+  <div id="postWall" class="starter-template">
     <h1>
       {{title}}
     </h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    <p class="lead">Onstogram.<br> Like Instagram, but Onstogram.</p>
+    <div ng-repeat="item in posts">{{item.user_id}}</div>
   </div>
   </div>
 </div>
