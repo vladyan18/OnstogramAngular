@@ -9,6 +9,7 @@ import {Routes, RouterModule} from '@angular/router';
 import { LoginComponent }   from './login.component';
 import { HomeComponent }   from './home.component';
 import { PostComponent } from './post/post.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 import { AuthService } from './auth/auth.service';
@@ -16,7 +17,8 @@ import { AuthService } from './auth/auth.service';
 // определение маршрутов
 const appRoutes: Routes =[
   { path: '', component: HomeComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({
@@ -25,7 +27,8 @@ const appRoutes: Routes =[
     AppNavbarComponent,
     LoginComponent,
     PostComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

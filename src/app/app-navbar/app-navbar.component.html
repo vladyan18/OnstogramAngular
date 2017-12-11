@@ -29,6 +29,13 @@
       Log Out
     </button>
 
+    <button
+      class="btn btn-primary btn-margin"
+      *ngIf="auth.isAuthenticated()"
+      routerLink="/profile">
+      Profile
+    </button>
+
     <a class="navbar-brand" href="#"><img src="assets/images/logo.png" height="53px" width="300px"/></a>
 
   </div>
