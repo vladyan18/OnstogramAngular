@@ -10,6 +10,7 @@ import { LoginComponent }   from './login.component';
 import { HomeComponent }   from './home.component';
 import { PostComponent } from './post/post.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DBRegisterService } from './auth/dbregister.service';
 
 
 import { AuthService } from './auth/auth.service';
@@ -35,7 +36,7 @@ const appRoutes: Routes =[
     BrowserModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,DBRegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
