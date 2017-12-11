@@ -5,12 +5,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
+import {noUndefined} from "@angular/compiler/src/util";
 
 @Injectable()
 export class AuthService {
 
   auth0 = new auth0.WebAuth({
-    clientID: 'uQSLW3ZHK-4YNLZ24XXBPgj_HkGF_3l5',
+    clientID: 'z2WVQFVU97HDAtz3apb4f8yiepSh0h36',
     domain: 'vladyan18.eu.auth0.com',
     responseType: 'token id_token',
     audience: 'https://vladyan18.eu.auth0.com/userinfo',
@@ -22,15 +23,16 @@ export class AuthService {
 
   public login(): void {
     this.auth0.authorize();
+    this.router.navigate(['/ii']);
   }
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       } else if (err) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/login']);
         console.log(err);
       }
     });
@@ -50,13 +52,22 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.router.navigate(['/']);
+    this.router.navigate(['/ii']);
   }
 
   public isAuthenticated(): boolean {
     // Check whether the current time is past the
     // access token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+    console.log(localStorage.getItem('expires_at') !== undefined);
+
+
+    if (localStorage.getItem('expires_at') !== undefined) {
+      const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+      var b:boolean = new Date().getTime() < expiresAt;
+      console.log(b);
+      return new Date().getTime() < expiresAt;
+    } else {
+      return false;
+    }
   }
 }

@@ -10,6 +10,9 @@ import { LoginComponent }   from './login.component';
 import { HomeComponent }   from './home.component';
 import { PostComponent } from './post/post.component';
 
+
+import { AuthService } from './auth/auth.service';
+
 // определение маршрутов
 const appRoutes: Routes =[
   { path: '', component: HomeComponent},
@@ -29,7 +32,7 @@ const appRoutes: Routes =[
     BrowserModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
