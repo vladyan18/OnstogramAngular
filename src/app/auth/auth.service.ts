@@ -16,7 +16,7 @@ export class AuthService {
     responseType: 'token id_token',
     audience: 'https://vladyan18.eu.auth0.com/userinfo',
     redirectUri: 'https://onstogramm.azurewebsites.net/login',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
   constructor(public router: Router) {}
