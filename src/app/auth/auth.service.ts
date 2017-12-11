@@ -23,7 +23,6 @@ export class AuthService {
 
   public login(): void {
     this.auth0.authorize();
-    this.router.navigate(['/ii']);
   }
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
@@ -32,7 +31,7 @@ export class AuthService {
         this.setSession(authResult);
         this.router.navigate(['/']);
       } else if (err) {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
         console.log(err);
       }
     });
@@ -52,7 +51,7 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.router.navigate(['/ii']);
+    this.router.navigate(['/']);
   }
 
   public isAuthenticated(): boolean {

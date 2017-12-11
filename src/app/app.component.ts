@@ -10,8 +10,8 @@ export class AppComponent {
   title = 'Tests';
 
   constructor(public auth: AuthService) {
-    auth.handleAuthentication();
-  }
+  auth.handleAuthentication();
+}
 
   testFunc(x:number, y:number) {
     return x + y;
