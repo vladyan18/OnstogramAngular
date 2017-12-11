@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule }   from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
+import { FeedComponent } from './feed/feed.component';
 import {Routes, RouterModule} from '@angular/router';
 
 import { LoginComponent }   from './login.component';
@@ -29,7 +30,8 @@ const appRoutes: Routes =[
     LoginComponent,
     PostComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    FeedComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

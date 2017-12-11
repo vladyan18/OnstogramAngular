@@ -1,12 +1,8 @@
 
 <div class="container" style="background-color: ghostwhite">
   <div class="well">
-  <div id="postWall" class="starter-template">
-    <h1>
-      {{title}}
-    </h1>
-    <p class="lead">Onstogram.<br> Like Instagram, but Onstogram.</p>
-
-  </div>
+    <div *ngFor="let post of posts">
+      <app-feed [post]="post"></app-feed>
+    </div>
   </div>
 </div>
