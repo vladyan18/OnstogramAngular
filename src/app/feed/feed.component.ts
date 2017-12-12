@@ -11,6 +11,7 @@ import {Post} from '../post';
 })
 export class FeedComponent {
   @Input() post: Post;
+  liked: boolean;
   constructor() {
 
   }

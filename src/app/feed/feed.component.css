@@ -7,6 +7,10 @@
   padding: 5px 10px 0px;
 }
 
+.liked{
+  color:#0000ff;
+}
+
 .panel-image img.panel-image-preview {
   width: 100%;
   border-radius: 4px 4px 0px 0px;

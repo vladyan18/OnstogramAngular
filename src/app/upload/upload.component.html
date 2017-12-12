@@ -1,8 +1,10 @@
 <div class="container" style="background-color: ghostwhite">
   <div class="well">
     <h1>Upload image</h1>
-    <div class="panel-image">
-      <img src="{{readerRes}}" class="panel-image-preview"/>
+    <div class="col-xs-12 col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8">
+      <div class="panel-image">
+        <img src="{{readerRes}}" class="panel-image-preview"/>
+      </div>
     </div>
     <b *ngIf="!idle">Sending image...</b>
     <form #form="ngForm" *ngIf="idle" (ngSubmit)="upload(form.value)">

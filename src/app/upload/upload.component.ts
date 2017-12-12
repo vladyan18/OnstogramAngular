@@ -53,6 +53,7 @@ export class UploadComponent implements OnInit {
     }
       )
       .subscribe((data:any) => {
+      console.log(data.status)
       if (data.status !== "200")
         this.router.navigate(['/error']);
       else

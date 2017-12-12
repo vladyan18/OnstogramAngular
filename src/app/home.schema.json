@@ -1,0 +1,37 @@
+{
+  "type":"array",
+  "items": {
+    "type":"object",
+    "properties": {
+      "user_id": {
+        "type": "int"
+      },
+      "url": {
+        "type": "string"
+       },
+      "time": {
+        "type": "string"
+      },
+      "text": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "id": {
+        "type": "int"
+      },
+      "nickname": {
+        "type": "string"
+      },
+      "avatar_url": {
+        "type": "string"
+      },
+      "vk_sub": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false,
+    "minProperties": 3
+  }
+}
