@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-
-
+    if (this.auth.userProfile)
+      this.profile = this.auth.userProfile;
       this.getPosts();
     }
 
