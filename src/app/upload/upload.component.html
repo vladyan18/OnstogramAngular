@@ -4,8 +4,8 @@
     <div class="panel-image">
       <img src="{{readerRes}}" class="panel-image-preview"/>
     </div>
-    <b *ngif="!idle">Sending image...</b>
-    <form #form="ngForm" *ngif="idle" (ngSubmit)="upload(form.value)">
+    <b *ngIf="!idle">Sending image...</b>
+    <form #form="ngForm" *ngIf="idle" (ngSubmit)="upload(form.value)">
         <label for="Title">Title</label>
         <input type="text" class="form-control" id="Title"
                 name="Title" ngModel/>

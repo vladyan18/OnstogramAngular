@@ -1,6 +1,7 @@
 
 <div class="container" style="background-color: ghostwhite">
   <div class="well">
+    <b *ngIf="loading"> Loading...</b>
     <div *ngFor="let post of posts">
       <app-feed [post]="post"></app-feed>
     </div>

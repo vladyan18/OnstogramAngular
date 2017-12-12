@@ -16,14 +16,15 @@ import {Post} from './post';
 export class HomeComponent implements OnInit {
   title = 'Test';
   posts : Post[] = [];
-
+  loading: boolean;
   constructor(private http: HttpClient)
   {
-
+  this.loading = true;
   }
 
   ngOnInit()
   {
+    this.loading = true;
     this.getPosts();
   }
 
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit {
       .subscribe((data) => {
         this.posts=<Post[]>data
         console.log(this.posts);
+        this.loading = false;
       });
   }
 }
