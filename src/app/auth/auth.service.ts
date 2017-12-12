@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {RequestOptions} from "@angular/http";
 
 @Injectable()
 export class AuthService {
@@ -37,7 +38,9 @@ export class AuthService {
         });
 
         console.log("Sending post");
-        this.http.post("https://onstogram.azurewebsites.net/api/addUser?code=La/tnEGZfKlJ58F9CmXcLOyJANrEiMFn39pIYS46ecSOMylA2MiR1Q==",this.userProfile)
+        this.http.post("https://onstogram.azurewebsites.net/api/addUser?code=IaiNXuqa5OExuu2H4e0ry/h58SbG4E9ZXg9VvBNlhCf023HNXUvo8Q==",this.userProfile,{
+          headers: new HttpHeaders().set('Origin', 'onstogramm.azurewebsites.net'),
+        })
           .subscribe((data:any) => {
             console.log(data);
             if ((data.status != "200") && (data.status != "201"))
@@ -74,13 +77,11 @@ export class AuthService {
   public isAuthenticated(): boolean {
     // Check whether the current time is past the
     // access token's expiry time
-    console.log(localStorage.getItem('expires_at') !== undefined);
 
 
     if (localStorage.getItem('expires_at') !== undefined) {
       const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
       var b:boolean = new Date().getTime() < expiresAt;
-      console.log(b);
       return new Date().getTime() < expiresAt;
     } else {
       return false;

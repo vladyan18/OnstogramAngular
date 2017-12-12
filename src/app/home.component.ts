@@ -29,7 +29,8 @@ export class HomeComponent implements OnInit {
 
   getPosts()
   {
-    this.http.get("https://onstogram.azurewebsites.net/api/getLastImages?code=cEBAcEtwZu1eB1gprua9MswjxUcL04v4BDzV7L8HtCIOIQNvbs6YSg==")
+    console.log("getting posts");
+    this.http.get("https://onstogram.azurewebsites.net/api/getLastImages?code=IaiNXuqa5OExuu2H4e0ry/h58SbG4E9ZXg9VvBNlhCf023HNXUvo8Q==")
       .subscribe((data) => {
         this.posts=<Post[]>data
         console.log(this.posts);
