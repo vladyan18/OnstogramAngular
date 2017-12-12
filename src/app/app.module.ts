@@ -13,7 +13,7 @@ import { PostComponent } from './post/post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DBRegisterService } from './auth/dbregister.service';
 import { UploadComponent} from './upload/upload.component';
-
+import { ErrorComponent} from './error/error.component';
 
 import { AuthService } from './auth/auth.service';
 import {FormsModule} from "@angular/forms";
@@ -23,7 +23,8 @@ const appRoutes: Routes =[
   { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'profile', component: ProfileComponent},
-  { path: 'upload', component: UploadComponent}
+  { path: 'upload', component: UploadComponent},
+  { path: 'error', component: ErrorComponent}
 ];
 
 @NgModule({
@@ -35,7 +36,8 @@ const appRoutes: Routes =[
     HomeComponent,
     ProfileComponent,
     FeedComponent,
-    UploadComponent
+    UploadComponent,
+    ErrorComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -6,6 +6,7 @@ import { UploadPost }    from './uploadPost';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {RequestOptions} from "@angular/http";
 import {AuthService} from "../auth/auth.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload',
@@ -17,10 +18,14 @@ export class UploadComponent implements OnInit {
   file: File;
   readerRes: any;
   profile: any;
+  idle: boolean;
 
-  constructor( private http: HttpClient, public auth: AuthService) {}
+  constructor( private http: HttpClient, public auth: AuthService, public router: Router) {
+    this.idle = true;
+  }
 
   ngOnInit(){
+    this.idle = true;
     if (this.auth.userProfile) {
       this.profile = this.auth.userProfile;
     } else {
@@ -31,7 +36,7 @@ export class UploadComponent implements OnInit {
   }
 
   upload(value: any) {
-
+    this.idle = false;
     var Headers = new HttpHeaders();
     console.log(this.profile.sub);
     Headers.append('Accept', 'application/json');
@@ -47,7 +52,13 @@ export class UploadComponent implements OnInit {
       headers: Headers
     }
       )
-      .subscribe((data:any) => { console.log(data)})
+      .subscribe((data:any) => {
+      if (data.status !== "200")
+        this.router.navigate(['/error']);
+      else
+        this.router.navigate(['/']);
+    }
+      )
     }
 
 
