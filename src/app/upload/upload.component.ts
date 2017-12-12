@@ -39,8 +39,8 @@ export class UploadComponent implements OnInit {
       {
         "file": this.readerRes,
         "filename": this.file['name'],
-        "text": value.text,
-        "title": value.title,
+        "text": value.Text,
+        "title": value.Title,
         "sub": this.profile.sub
         },
     {
