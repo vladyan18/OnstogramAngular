@@ -16,6 +16,7 @@ import { ErrorComponent} from './error/error.component';
 
 import { AuthService } from './auth/auth.service';
 import {FormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 
 // определение маршрутов
 const appRoutes: Routes =[
@@ -41,7 +42,8 @@ const appRoutes: Routes =[
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [AuthService,DBRegisterService],
   bootstrap: [AppComponent]
