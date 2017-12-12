@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { UploadPost }    from './uploadPost';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {RequestOptions} from "@angular/http";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'app-upload',
@@ -15,7 +16,7 @@ export class UploadComponent {
   model : UploadPost = new UploadPost('', '', '');
   file: File;
   readerRes: any;
-  constructor( private http: HttpClient) {}
+  constructor( private http: HttpClient, public auth: AuthService) {}
 
   upload(value: any) {
     const formData = new FormData();
@@ -30,7 +31,11 @@ export class UploadComponent {
     this.http.post('https://testvladyan18.azurewebsites.net/api/FileUploadNode/'+this.file['name']+'?code=0Gi5ReHCpiIaBz1pOHo1XWzIocyaJiHZZI0PSDhmhC28WXdJS7vsiw==',
       {
         "file": this.readerRes,
-        "filename": this.file['name']},
+        "filename": this.file['name'],
+        "text": value.text,
+        "title": value.title,
+        "sub": auth.userProfile.sub
+        },
     {
       headers: Headers
     }

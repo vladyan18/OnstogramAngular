@@ -22,7 +22,7 @@ export class AuthService {
 
   constructor(public router: Router, private http: HttpClient) {}
 
-  userProfile: any;
+  public userProfile: any;
 
   public login(): void {
     this.auth0.authorize();
