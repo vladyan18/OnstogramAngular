@@ -21,6 +21,11 @@ export class FeedComponent implements OnInit{
   constructor(private http: HttpClient, public auth: AuthService) {
   }
 
+  public uploadComment(value: any)
+  {
+
+  }
+
   public like():void {
     if (this.auth.userProfile)
       this.profile = this.auth.userProfile;

@@ -18,7 +18,10 @@
           <b>Like <span class="fa fa-thumbs-up" [ngStyle]="{'background-color':liked ? 'green' : 'red' }" (click)="like()"></span></b>
         </div>
         <div>
-
+          <form #form="ngForm" *ngIf="auth.isAuthenticated()" (ngSubmit)="uploadComment(form.value)">
+            <input type="text" class="form-control" id="Text" name="text" ngModel>
+            <button type="submit" class="btn btn-success">Submit</button>
+          </form>
         </div>
       </div>
       <hr>
