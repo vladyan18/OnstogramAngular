@@ -9,7 +9,7 @@
       </li>
 
       <li class="nav-item active" >
-        <a class="nav-link" href="/upload">Upload</a>
+        <a class="nav-link" href="/upload" *ngIf="auth.isAuthenticated()">Upload</a>
       </li>
     </ul>
 
