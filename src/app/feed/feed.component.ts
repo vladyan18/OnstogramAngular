@@ -22,6 +22,9 @@ export class FeedComponent implements OnInit{
   }
 
   public like():void {
+    if (this.auth.userProfile)
+      this.profile = this.auth.userProfile;
+
     if (this.profile)
     {
     this.http.post("https://testvladyan18.azurewebsites.net/api/likeImage?code=hh83dn6rfFjgOvB5LSbkeUgSzsVosZBmf5AMYL2AOLDVZKmK/5IZww==",
@@ -30,8 +33,10 @@ export class FeedComponent implements OnInit{
         "sub": this.profile.sub
       },{
       headers: new HttpHeaders().set( 'Content-Type', 'application/json'),
-    })}
-    this.liked = !this.liked;
+    })
+      this.liked = !this.liked;
+    }
+
 
   }
 
