@@ -34,8 +34,7 @@ export class AuthService {
         window.location.hash = '';
         this.setSession(authResult);
 
-        this.getProfile((err, profile) => { this.router.navigate(['/']);
-
+        this.getProfile((err, profile) => {
           console.log("Sending post");
           this.http.post("https://testvladyan18.azurewebsites.net/api/addUser?code=B6WEKtMiKSczULcoNA5HrdUbMZtwx0I6oAs2GiXr8vvGO/KafQIMxA==",profile,{
             headers: new HttpHeaders().set( 'Content-Type', 'application/json'),
@@ -47,6 +46,7 @@ export class AuthService {
                 this.logout();
                 throw new Error("Smthng with registering: " + data.status);
               }
+              this.router.navigate(['/']);
             });
         });
 
