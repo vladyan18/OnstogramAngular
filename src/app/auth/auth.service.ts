@@ -34,11 +34,11 @@ export class AuthService {
         window.location.hash = '';
         this.setSession(authResult);
 
-        this.getProfile((err, profile) => {
+        this.getProfile((err, profile) => { this.router.navigate(['/']);
         });
 
         console.log("Sending post");
-        this.http.post("https://onstogram.azurewebsites.net/api/addUser?code=IaiNXuqa5OExuu2H4e0ry/h58SbG4E9ZXg9VvBNlhCf023HNXUvo8Q==",this.userProfile,{
+        this.http.post("https://testvladyan18.azurewebsites.net/api/addUser?code=B6WEKtMiKSczULcoNA5HrdUbMZtwx0I6oAs2GiXr8vvGO/KafQIMxA==",this.userProfile,{
           headers: new HttpHeaders().set('withCredentials', 'true'),
         })
           .subscribe((data:any) => {
@@ -49,7 +49,6 @@ export class AuthService {
               throw new Error("Smthng with registering: " + data.status);
             }
           });
-        this.router.navigate(['/']);
       } else if (err) {
         this.router.navigate(['/']);
         console.log(err);
