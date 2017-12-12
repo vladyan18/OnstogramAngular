@@ -16,7 +16,7 @@
           <a href="#download" class="btn btn-primary btn-sm btn-hover pull-left">Save <span class="fa fa-bookmark"></span></a>
           <a href="#facebook" class="btn btn-success btn-sm btn-hover pull-left" style="margin-left: 5px;">Shr <span class="glyphicon glyphicon-send"></span></a>
           <a class="btn comsys btn-danger btn-sm btn-hover pull-left" style="margin-left: 5px;">Cmt <span class="fa fa-comment"></span></a>
-          <a href="#share" class="btn btn-warning btn-sm btn-hover pull-left" style="margin-left: 5px;">Like <span class="fa fa-thumbs-up"  ng-click="like()"></span></a>
+          <a href="#share" class="btn btn-warning btn-sm btn-hover pull-left" style="margin-left: 5px;">Like <span class="fa fa-thumbs-up" [ngStyle]="{'background-color':liked ? 'green' : 'red' }" ng-click="like()"></span></a>
         </div>
       </div>
       <hr>
