@@ -1,7 +1,7 @@
 /**
  * Created by Владислав on 12.12.2017.
  */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UploadPost }    from './uploadPost';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {RequestOptions} from "@angular/http";
@@ -12,21 +12,28 @@ import {AuthService} from "../auth/auth.service";
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css']
 })
-export class UploadComponent {
+export class UploadComponent implements OnInit {
   model : UploadPost = new UploadPost('', '', '');
   file: File;
   readerRes: any;
+  profile: any;
+
   constructor( private http: HttpClient, public auth: AuthService) {}
 
-  upload(value: any) {
-    const formData = new FormData();
-    const uFile = this.file;
+  ngOnInit(){
+    if (this.auth.userProfile) {
+      this.profile = this.auth.userProfile;
+    } else {
+      this.auth.getProfile((err, profile) => {
+        this.profile = profile;
+      });
+    }
+  }
 
-    formData.append("file", this.file);
-    formData.append("filename", this.file['name']);
+  upload(value: any) {
 
     var Headers = new HttpHeaders();
-
+    console.log(profile.sub);
     Headers.append('Accept', 'application/json');
     this.http.post('https://testvladyan18.azurewebsites.net/api/FileUploadNode/'+this.file['name']+'?code=0Gi5ReHCpiIaBz1pOHo1XWzIocyaJiHZZI0PSDhmhC28WXdJS7vsiw==',
       {
@@ -34,7 +41,7 @@ export class UploadComponent {
         "filename": this.file['name'],
         "text": value.text,
         "title": value.title,
-        "sub": auth.userProfile.sub
+        "sub": profile.sub
         },
     {
       headers: Headers
