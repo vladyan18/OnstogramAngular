@@ -9,7 +9,6 @@ import {Routes, RouterModule} from '@angular/router';
 
 import { LoginComponent }   from './login.component';
 import { HomeComponent }   from './home.component';
-import { PostComponent } from './post/post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DBRegisterService } from './auth/dbregister.service';
 import { UploadComponent} from './upload/upload.component';
@@ -32,7 +31,6 @@ const appRoutes: Routes =[
     AppComponent,
     AppNavbarComponent,
     LoginComponent,
-    PostComponent,
     HomeComponent,
     ProfileComponent,
     FeedComponent,

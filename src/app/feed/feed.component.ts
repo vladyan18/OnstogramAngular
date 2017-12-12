@@ -22,13 +22,15 @@ export class FeedComponent implements OnInit{
   }
 
   public like():void {
+    if (this.profile)
+    {
     this.http.post("https://testvladyan18.azurewebsites.net/api/likeImage?code=hh83dn6rfFjgOvB5LSbkeUgSzsVosZBmf5AMYL2AOLDVZKmK/5IZww==",
       {
         "id": this.post.id,
         "sub": this.profile.sub
       },{
       headers: new HttpHeaders().set( 'Content-Type', 'application/json'),
-    })
+    })}
     this.liked = !this.liked;
 
   }
@@ -36,12 +38,5 @@ export class FeedComponent implements OnInit{
   ngOnInit() {
     this.liked = this.post.liked;
 
-    if (this.auth.userProfile) {
-      this.profile = this.auth.userProfile;
-    } else {
-      this.auth.getProfile((err, profile) => {
-        this.profile = profile;
-      });
-    }
   }
 }

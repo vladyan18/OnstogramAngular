@@ -27,26 +27,29 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
 
-    if (this.auth.userProfile) {
-      this.profile = this.auth.userProfile;
-    } else {
-      this.auth.getProfile((err, profile) => {
-        this.profile = profile;
-      });
 
       this.getPosts();
     }
-  }
 
-    getPosts()
-    {
+
+    getPosts() {
       console.log("getting posts");
-      this.http.get("https://testvladyan18.azurewebsites.net/api/getLastImages?code=B6WEKtMiKSczULcoNA5HrdUbMZtwx0I6oAs2GiXr8vvGO/KafQIMxA==?sub" + this.profile.sub)
-        .subscribe((data) => {
-          this.posts = <Post[]>data
-          console.log(this.posts);
-          this.loading = false;
-        });
-    }
+
+        if (this.profile)
+          this.http.get("https://testvladyan18.azurewebsites.net/api/getLastImages?code=B6WEKtMiKSczULcoNA5HrdUbMZtwx0I6oAs2GiXr8vvGO/KafQIMxA==?sub" + this.profile.sub)
+            .subscribe((data) => {
+              this.posts = <Post[]>data
+              console.log(this.posts);
+              this.loading = false;
+            });
+        else
+          this.http.get("https://testvladyan18.azurewebsites.net/api/getLastImages?code=B6WEKtMiKSczULcoNA5HrdUbMZtwx0I6oAs2GiXr8vvGO/KafQIMxA==")
+            .subscribe((data) => {
+              this.posts = <Post[]>data
+              console.log(this.posts);
+              this.loading = false;
+            });
+      }
+
 
 }

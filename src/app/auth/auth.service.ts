@@ -48,6 +48,10 @@ export class AuthService {
               }
               this.router.navigate(['/']);
             });
+          if (err) {
+            console.log(err);
+            this.router.navigate(['/']);
+          }
         });
 
 
@@ -94,14 +98,14 @@ export class AuthService {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
       throw new Error('Access token must exist to fetch profile');
+    } else {
+      const self = this;
+      this.auth0.client.userInfo(accessToken, (err, profile) => {
+        if (profile) {
+          self.userProfile = profile;
+        }
+        cb(err, profile);
+      });
     }
-
-    const self = this;
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
-      if (profile) {
-        self.userProfile = profile;
-      }
-      cb(err, profile);
-    });
   }
 }

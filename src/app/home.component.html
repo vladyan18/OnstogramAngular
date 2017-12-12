@@ -2,8 +2,6 @@
 <div class="container" style="background-color: ghostwhite">
   <div class="well">
     <b *ngIf="loading"> Loading...</b>
-    <i *ngIf="loading" class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-    <span *ngIf="loading" class="sr-only">Loading...</span>
     <div *ngFor="let post of posts">
       <app-feed [post]="post"></app-feed>
     </div>
