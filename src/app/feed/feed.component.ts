@@ -3,6 +3,8 @@
  */
 import { Component, Input, OnInit } from '@angular/core';
 import {Post} from '../post';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {AuthService} from "../auth/auth.service";
 
 
   @Component({
@@ -13,12 +15,33 @@ import {Post} from '../post';
 export class FeedComponent implements OnInit{
   @Input() post: Post;
   liked: boolean;
-  constructor() {
+  profile: any;
+
+  constructor(private http: HttpClient, public auth: AuthService) {
 
   }
 
-  ngOnInit()
-  {
+  public like():void {
+    this.http.post("https://testvladyan18.azurewebsites.net/api/likeImage?code=hh83dn6rfFjgOvB5LSbkeUgSzsVosZBmf5AMYL2AOLDVZKmK/5IZww==",
+      {
+        "id": this.post.id,
+        "sub": this.profile.sub
+      },{
+      headers: new HttpHeaders().set( 'Content-Type', 'application/json'),
+    })
+    this.liked = !this.liked;
+
+  }
+
+  ngOnInit() {
     this.liked = this.post.liked;
+
+    if (this.auth.userProfile) {
+      this.profile = this.auth.userProfile;
+    } else {
+      this.auth.getProfile((err, profile) => {
+        this.profile = profile;
+      });
+    }
   }
 }
