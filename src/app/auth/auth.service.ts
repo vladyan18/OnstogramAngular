@@ -35,20 +35,22 @@ export class AuthService {
         this.setSession(authResult);
 
         this.getProfile((err, profile) => { this.router.navigate(['/']);
+
+          console.log("Sending post");
+          this.http.post("https://testvladyan18.azurewebsites.net/api/addUser?code=B6WEKtMiKSczULcoNA5HrdUbMZtwx0I6oAs2GiXr8vvGO/KafQIMxA==",profile,{
+            headers: new HttpHeaders().set( 'Content-Type', 'application/json'),
+          })
+            .subscribe((data:any) => {
+              console.log(data);
+              if ((data.status != "200") && (data.status != "201"))
+              {
+                this.logout();
+                throw new Error("Smthng with registering: " + data.status);
+              }
+            });
         });
 
-        console.log("Sending post");
-        this.http.post("https://testvladyan18.azurewebsites.net/api/addUser?code=B6WEKtMiKSczULcoNA5HrdUbMZtwx0I6oAs2GiXr8vvGO/KafQIMxA==",this.userProfile,{
-          headers: new HttpHeaders().set('withCredentials', 'true'),
-        })
-          .subscribe((data:any) => {
-            console.log(data);
-            if ((data.status != "200") && (data.status != "201"))
-            {
-              this.logout();
-              throw new Error("Smthng with registering: " + data.status);
-            }
-          });
+
       } else if (err) {
         this.router.navigate(['/']);
         console.log(err);
