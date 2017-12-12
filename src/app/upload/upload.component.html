@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="container" style="background-color: ghostwhite">
+  <div class="well">
+    <h1>Upload image</h1>
 
-</body>
-</html>
+    <form #form="ngForm" (ngSubmit)="upload(form.value)">
+        <label for="Title">Title</label>
+        <input type="text" class="form-control" id="Title"
+                name="Title" ngModel/>
+
+        <label for="Text">Text</label>
+        <input type="text" class="form-control" id="Text"
+               name="Text" ngModel>
+
+      <div class="form-group">
+        <input type="file" name="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." required ngModel/>
+      </div>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+  </div>
+</div>

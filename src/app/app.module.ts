@@ -12,15 +12,18 @@ import { HomeComponent }   from './home.component';
 import { PostComponent } from './post/post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DBRegisterService } from './auth/dbregister.service';
+import { UploadComponent} from './upload/upload.component';
 
 
 import { AuthService } from './auth/auth.service';
+import {FormsModule} from "@angular/forms";
 
 // определение маршрутов
 const appRoutes: Routes =[
   { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'profile', component: ProfileComponent}
+  { path: 'profile', component: ProfileComponent},
+  { path: 'upload', component: UploadComponent}
 ];
 
 @NgModule({
@@ -31,12 +34,14 @@ const appRoutes: Routes =[
     PostComponent,
     HomeComponent,
     ProfileComponent,
-    FeedComponent
+    FeedComponent,
+    UploadComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [AuthService,DBRegisterService],
   bootstrap: [AppComponent]
