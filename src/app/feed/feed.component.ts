@@ -58,6 +58,6 @@ export class FeedComponent implements OnInit{
 
   ngOnInit() {
 
-
+    this.liked = this.post.liked;
   }
 }
