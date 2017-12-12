@@ -9,4 +9,5 @@ export class Post
   nickname:string;
   text:string;
   title:string;
+  liked: boolean;
 }
