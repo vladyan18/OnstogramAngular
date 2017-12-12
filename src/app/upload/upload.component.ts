@@ -33,7 +33,7 @@ export class UploadComponent implements OnInit {
   upload(value: any) {
 
     var Headers = new HttpHeaders();
-    console.log(profile.sub);
+    console.log(this.profile.sub);
     Headers.append('Accept', 'application/json');
     this.http.post('https://testvladyan18.azurewebsites.net/api/FileUploadNode/'+this.file['name']+'?code=0Gi5ReHCpiIaBz1pOHo1XWzIocyaJiHZZI0PSDhmhC28WXdJS7vsiw==',
       {
@@ -41,7 +41,7 @@ export class UploadComponent implements OnInit {
         "filename": this.file['name'],
         "text": value.text,
         "title": value.title,
-        "sub": profile.sub
+        "sub": this.profile.sub
         },
     {
       headers: Headers
