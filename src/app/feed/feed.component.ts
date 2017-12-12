@@ -16,7 +16,6 @@ export class FeedComponent implements OnInit{
   @Input() post: Post;
   @Input() profile: any;
   liked: boolean;
-  profile: any;
 
   constructor(private http: HttpClient, public auth: AuthService) {
   }
