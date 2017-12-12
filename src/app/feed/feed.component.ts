@@ -10,8 +10,6 @@ import {Post} from '../post';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent {
-  Text:string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.";
-  Title:string = "Summary";
   @Input() post: Post;
   constructor() {
 

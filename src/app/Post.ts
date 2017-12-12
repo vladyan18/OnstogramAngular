@@ -6,4 +6,7 @@ export class Post
   id:string = "0";
   user_id:string = "";
   url:string = "";
+  nickname:string;
+  text:string;
+  title:string;
 }
