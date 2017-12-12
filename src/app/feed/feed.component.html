@@ -14,7 +14,7 @@
         <!--<input type="checkbox" id="toggle-1" class="panel-image-toggle">-->
         <div class="panel-footer clearfix">
           <a href="{{post.url}}" class="btn btn-primary btn-sm btn-hover pull-left">Save <span class="fa fa-bookmark"></span></a>
-          <a class="btn comsys btn-danger btn-sm btn-hover pull-left" style="margin-left: 5px;" (click) = "opened = true">Cmt <span class="fa fa-comment"></span></a>
+          <a class="btn comsys btn-danger btn-sm btn-hover pull-left" style="margin-left: 5px;" (click) = "opened = !opened">Cmt <span class="fa fa-comment"></span></a>
           <b (click)="like()">Like <span class="fa fa-thumbs-up" [ngStyle]="{'background-color':liked ? 'green' : 'red' }" (click)="like()"></span></b>
         </div>
         <div>

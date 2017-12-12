@@ -24,7 +24,16 @@ export class FeedComponent implements OnInit{
 
   public uploadComment(value: any)
   {
-
+    if (this.auth.userProfile) {
+      this.http.post("https://testvladyan18.azurewebsites.net/api/addComment?code=UH2InHSypkbaxof/TtzfXBAl4L1R47HwoM/Nz1BxRLVs/nboQ8qEZw==",
+        {
+          "id": this.post.id,
+          "sub": this.auth.userProfile.sub,
+          "text": value.text
+        }, {
+          headers: new HttpHeaders().set('Content-Type', 'application/json'),
+        })
+    }
   }
 
   public like():void {
@@ -50,7 +59,9 @@ export class FeedComponent implements OnInit{
           "sub": "vkontakte|55245649"
         },{
           headers: new HttpHeaders().set( 'Content-Type', 'application/json'),
-        })
+        }).subscribe((data:any) => {
+        console.log(data.status)
+      })
       this.liked = !this.liked;
     }
 
